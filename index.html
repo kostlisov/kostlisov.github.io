@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інвентор AI - Твій розумний шкільний помічник</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="ph-fill ph-student"></i>
+                <span>Інвентор AI</span>
+            </div>
+            <button class="btn-primary" onclick="toggleChat()">Відкрити чат</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <h1>Твій розумний помічник у ліцеї "Інвентор"</h1>
+            <p>Швидко знаходь відповіді на питання про навчання, розклад, правила ліцею та отримуй допомогу з проєктами. Працює на базі алгоритмів Gemini.</p>
+            <button class="btn-large" onclick="toggleChat()">Почати спілкування <i class="ph ph-arrow-right"></i></button>
+        </section>
+
+        <section class="features container">
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="ph ph-brain"></i></div>
+                <h3>Розумний аналіз</h3>
+                <p>ШІ аналізує твоє питання та формує чітку, зрозумілу відповідь, адаптовану під наші шкільні стандарти.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="ph ph-books"></i></div>
+                <h3>База знань</h3>
+                <p>Швидкий доступ до розкладів, правил та типових ситуацій без очікування відповіді від адміністрації.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="ph ph-link"></i></div>
+                <h3>Джерела інформації</h3>
+                <p>Жодних вигадок. Кожна відповідь підкріплена посиланнями на офіційні документи ліцею "Інвентор".</p>
+            </div>
+        </section>
+
+        <section class="faq container">
+            <h2>Часті запитання</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>
+                        Де знайти актуальний розклад дзвінків та уроків?
+                        <i class="ph ph-caret-down"></i>
+                    </summary>
+                    <p>Розклад доступний на платформі ліцею в розділі "Навчальний процес" або прямо тут, у нашому боті, за запитом "Розклад дзвінків".</p>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Що робити, якщо я захворів(ла) і не прийду на заняття?
+                        <i class="ph ph-caret-down"></i>
+                    </summary>
+                    <p>Батьки повинні попередити тьютора або куратора класу в електронному щоденнику до 08:30 ранку. Після одужання необхідно надати медичну довідку.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>
+                        Як записатися на додаткові гуртки (STEM, робототехніка)?
+                        <i class="ph ph-caret-down"></i>
+                    </summary>
+                    <p>Реєстрація на додаткові активності відбувається на початку семестру через форму в особистому кабінеті батьків. Деталі можна дізнатися у адміністратора.</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2026 Приватний ліцей "Інвентор". Усі права захищено.</p>
+            <div class="footer-links">
+                <a href="#">Політика використання ШІ</a>
+                <a href="#">Контакти ліцею</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chat-widget-container">
+        <button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Відкрити чат">
+            <i class="ph-fill ph-chat-teardrop-dots"></i>
+        </button>
+
+        <div class="chat-window hidden" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <div class="avatar"><i class="ph-fill ph-robot"></i></div>
+                    <div>
+                        <strong>Інвентор Бот</strong>
+                        <span class="status">Онлайн</span>
+                    </div>
+                </div>
+                <button class="close-btn" onclick="toggleChat()" aria-label="Закрити чат"><i class="ph ph-x"></i></button>
+            </div>
+            
+            <div class="chat-body" id="chatBody">
+                <div class="message bot">
+                    <div class="message-content">
+                        Привіт! 👋 Я ШІ-помічник ліцею "Інвентор". Запитай мене про розклад, правила або попроси допомоги з проєктами!
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Напишіть своє запитання..." autocomplete="off">
+                <button id="sendBtn" onclick="sendMessage()" aria-label="Надіслати повідомлення">
+                    <i class="ph-fill ph-paper-plane-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,121 +1,302 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Інвентор AI - Твій розумний шкільний помічник</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ШІ‑асистент Приватного ліцею «Інвентор» (Київ): відповіді для батьків та учнів із посиланнями на джерела. Copilot API." />
+  <title>Inventor AI — Шкільний ШІ‑асистент</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
+
 <body>
+  <a class="skip-link" href="#main">Перейти до контенту</a>
 
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="ph-fill ph-student"></i>
-                <span>Інвентор AI</span>
-            </div>
-            <button class="btn-primary" onclick="toggleChat()">Відкрити чат</button>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-content">
+      <div class="brand" aria-label="Бренд Inventor AI">
+        <div class="logo" aria-hidden="true">
+          <i class="ph-fill ph-student"></i>
         </div>
-    </header>
-
-    <main>
-        <section class="hero container">
-            <h1>Твій розумний помічник у ліцеї "Інвентор"</h1>
-            <p>Швидко знаходь відповіді на питання про навчання, розклад, правила ліцею та отримуй допомогу з проєктами. Працює на базі алгоритмів Gemini.</p>
-            <button class="btn-large" onclick="toggleChat()">Почати спілкування <i class="ph ph-arrow-right"></i></button>
-        </section>
-
-        <section class="features container">
-            <div class="feature-card">
-                <div class="icon-wrapper"><i class="ph ph-brain"></i></div>
-                <h3>Розумний аналіз</h3>
-                <p>ШІ аналізує твоє питання та формує чітку, зрозумілу відповідь, адаптовану під наші шкільні стандарти.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon-wrapper"><i class="ph ph-books"></i></div>
-                <h3>База знань</h3>
-                <p>Швидкий доступ до розкладів, правил та типових ситуацій без очікування відповіді від адміністрації.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon-wrapper"><i class="ph ph-link"></i></div>
-                <h3>Джерела інформації</h3>
-                <p>Жодних вигадок. Кожна відповідь підкріплена посиланнями на офіційні документи ліцею "Інвентор".</p>
-            </div>
-        </section>
-
-        <section class="faq container">
-            <h2>Часті запитання</h2>
-            <div class="faq-list">
-                <details class="faq-item">
-                    <summary>
-                        Де знайти актуальний розклад дзвінків та уроків?
-                        <i class="ph ph-caret-down"></i>
-                    </summary>
-                    <p>Розклад доступний на платформі ліцею в розділі "Навчальний процес" або прямо тут, у нашому боті, за запитом "Розклад дзвінків".</p>
-                </details>
-                <details class="faq-item">
-                    <summary>
-                        Що робити, якщо я захворів(ла) і не прийду на заняття?
-                        <i class="ph ph-caret-down"></i>
-                    </summary>
-                    <p>Батьки повинні попередити тьютора або куратора класу в електронному щоденнику до 08:30 ранку. Після одужання необхідно надати медичну довідку.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>
-                        Як записатися на додаткові гуртки (STEM, робототехніка)?
-                        <i class="ph ph-caret-down"></i>
-                    </summary>
-                    <p>Реєстрація на додаткові активності відбувається на початку семестру через форму в особистому кабінеті батьків. Деталі можна дізнатися у адміністратора.</p>
-                </details>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2026 Приватний ліцей "Інвентор". Усі права захищено.</p>
-            <div class="footer-links">
-                <a href="#">Політика використання ШІ</a>
-                <a href="#">Контакти ліцею</a>
-            </div>
+        <div class="brand-text">
+          <span class="brand-name">Inventor AI</span>
+          <span class="brand-subtitle">Приватний ліцей «Інвентор», Київ</span>
         </div>
-    </footer>
+      </div>
 
-    <div class="chat-widget-container">
-        <button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Відкрити чат">
-            <i class="ph-fill ph-chat-teardrop-dots"></i>
+      <nav class="header-nav" aria-label="Навігація">
+        <a class="nav-link" href="#features">Переваги</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <a class="nav-link" href="#contacts">Контакти</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-ghost" type="button" id="openChatTopBtn">
+          <i class="ph ph-chat-centered-dots" aria-hidden="true"></i>
+          Відкрити чат
         </button>
-
-        <div class="chat-window hidden" id="chatWindow">
-            <div class="chat-header">
-                <div class="chat-title">
-                    <div class="avatar"><i class="ph-fill ph-robot"></i></div>
-                    <div>
-                        <strong>Інвентор Бот</strong>
-                        <span class="status">Онлайн</span>
-                    </div>
-                </div>
-                <button class="close-btn" onclick="toggleChat()" aria-label="Закрити чат"><i class="ph ph-x"></i></button>
-            </div>
-            
-            <div class="chat-body" id="chatBody">
-                <div class="message bot">
-                    <div class="message-content">
-                        Привіт! 👋 Я ШІ-помічник ліцею "Інвентор". Запитай мене про розклад, правила або попроси допомоги з проєктами!
-                    </div>
-                </div>
-            </div>
-
-            <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="Напишіть своє запитання..." autocomplete="off">
-                <button id="sendBtn" onclick="sendMessage()" aria-label="Надіслати повідомлення">
-                    <i class="ph-fill ph-paper-plane-right"></i>
-                </button>
-            </div>
-        </div>
+      </div>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="Головний блок">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="pill" role="note">
+            <i class="ph ph-shield-check" aria-hidden="true"></i>
+            Відповіді з джерелами • на базі Copilot API
+          </div>
+
+          <h1>Твій розумний шкільний помічник</h1>
+          <p class="lead">
+            Запитай про навчальний процес, правила, документи, розклад або отримай підказку з предметів.
+            ШІ‑асистент підказує <strong>з перевіркою</strong> та завжди додає <strong>посилання на джерела</strong>.
+          </p>
+
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" type="button" id="startChatBtn">
+              Почати спілкування
+              <i class="ph ph-arrow-right" aria-hidden="true"></i>
+            </button>
+
+            <a class="btn btn-secondary btn-lg" href="#faq">
+              Переглянути FAQ
+              <i class="ph ph-question" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="trust-row" aria-label="Переваги у цифрах">
+            <div class="trust-item">
+              <strong>24/7</strong>
+              <span>доступність</span>
+            </div>
+            <div class="trust-item">
+              <strong>1‑2 сек</strong>
+              <span>середня відповідь</span>
+            </div>
+            <div class="trust-item">
+              <strong>100%</strong>
+              <span>джерела під кожною відповіддю</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="glass-card">
+            <div class="glass-top">
+              <div class="dots">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="glass-title">Приклад діалогу</span>
+            </div>
+
+            <div class="mini-chat">
+              <div class="mini-msg user">
+                <span>Де подивитись розклад дзвінків?</span>
+              </div>
+              <div class="mini-msg bot">
+                <span>Ось де знайти актуальний розклад та документ‑підтвердження.</span>
+                <div class="mini-sources">
+                  <span>Джерела:</span>
+                  <a href="#" tabindex="-1">Розклад</a>
+                  <a href="#" tabindex="-1">Правила</a>
+                </div>
+              </div>
+              <div class="mini-typing">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+
+            <div class="glass-bottom">
+              <span class="chip"><i class="ph ph-link" aria-hidden="true"></i> Джерела</span>
+              <span class="chip"><i class="ph ph-books" aria-hidden="true"></i> FAQ‑база</span>
+              <span class="chip"><i class="ph ph-brain" aria-hidden="true"></i> Copilot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features" aria-label="Переваги">
+      <div class="container">
+        <div class="section-head">
+          <h2>Чому це зручно</h2>
+          <p>Швидко. Зрозуміло. Перевіряємо факти та додаємо посилання на джерела.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature-card">
+            <div class="icon-wrapper" aria-hidden="true"><i class="ph ph-brain"></i></div>
+            <h3>🧠 Розумний аналіз</h3>
+            <p>Асистент розуміє контекст запиту, уточнює деталі та формує відповідь на базі Copilot API.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-wrapper" aria-hidden="true"><i class="ph ph-books"></i></div>
+            <h3>📚 База знань</h3>
+            <p>Вбудована база типових запитань про навчання, правила, документи та щоденні шкільні ситуації.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-wrapper" aria-hidden="true"><i class="ph ph-link"></i></div>
+            <h3>🔗 Джерела</h3>
+            <p>Кожна відповідь має блок “Джерела:” — з посиланнями на документи/розділи сайту.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq" aria-label="Часті запитання">
+      <div class="container faq">
+        <div class="section-head">
+          <h2>Часті запитання</h2>
+          <p>Натисни на питання, щоб розгорнути відповідь. Або — одразу відправ його у чат.</p>
+        </div>
+
+        <div class="faq-list" id="faqList">
+          <details class="faq-item">
+            <summary>
+              <span>Де знайти актуальний розклад дзвінків?</span>
+              <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Розклад дзвінків розміщено на сайті ліцею у розділі “Навчальний процес”. У чаті спитай: “Розклад дзвінків”.</p>
+              <button class="btn btn-small btn-secondary faq-send" type="button" data-question="Де знайти актуальний розклад дзвінків?">
+                Запитати в чаті <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Що робити, якщо учень захворів і не прийде до школи?</span>
+              <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Зазвичай потрібно повідомити класного керівника/адміністратора класу в узгодженому каналі комунікації та надати довідку після одужання (залежить від внутрішніх правил).</p>
+              <button class="btn btn-small btn-secondary faq-send" type="button" data-question="Що робити, якщо учень захворів і не прийде до школи?">
+                Запитати в чаті <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Як отримати довідку про навчання?</span>
+              <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Зазвичай довідку можна замовити через адміністрацію/секретаря або форму на сайті (якщо доступна). Термін виготовлення — за внутрішнім регламентом.</p>
+              <button class="btn btn-small btn-secondary faq-send" type="button" data-question="Як отримати довідку про навчання?">
+                Запитати в чаті <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Чи може асистент допомогти з домашнім завданням?</span>
+              <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </summary>
+            <div class="faq-answer">
+              <p>Так — підкаже кроки розв’язання та пояснить тему. Для якості відповіді додай: клас/тему/умову задачі.</p>
+              <button class="btn btn-small btn-secondary faq-send" type="button" data-question="Допоможи з домашнім завданням: поясни тему / розв'яжи задачу.">
+                Запитати в чаті <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="contacts">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <i class="ph-fill ph-student" aria-hidden="true"></i>
+          <strong>Inventor AI</strong>
+        </div>
+        <p class="muted">© <span id="year"></span> Приватний ліцей «Інвентор». Усі права захищено.</p>
+        <p class="muted small">
+          Асистент надає інформаційні підказки. Для офіційних рішень завжди перевіряйте першоджерела.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#" aria-label="Політика використання ШІ">Політика використання ШІ</a>
+        <a href="#" aria-label="Контакти">Контакти</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget-container" aria-label="Чат‑віджет">
+    <!-- Overlay -->
+    <div class="chat-overlay hidden" id="chatOverlay" tabindex="-1" aria-hidden="true"></div>
+
+    <!-- FAB -->
+    <button
+      class="chat-fab"
+      id="chatFab"
+      type="button"
+      aria-label="Відкрити чат"
+      aria-controls="chatWindow"
+      aria-expanded="false"
+    >
+      <i class="ph-fill ph-chat-teardrop-dots" aria-hidden="true"></i>
+    </button>
+
+    <!-- Window -->
+    <section class="chat-window hidden" id="chatWindow" role="dialog" aria-modal="true" aria-label="Вікно чату">
+      <div class="chat-header">
+        <div class="chat-title">
+          <div class="avatar" aria-hidden="true"><i class="ph-fill ph-robot"></i></div>
+          <div>
+            <strong>Inventor AI</strong>
+            <span class="status" id="chatStatus">Онлайн</span>
+          </div>
+        </div>
+
+        <button class="close-btn" id="chatCloseBtn" type="button" aria-label="Закрити чат">
+          <i class="ph ph-x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="chat-body" id="chatBody" aria-label="Історія повідомлень">
+        <div class="message bot">
+          <div class="message-content">
+            Привіт! 👋 Я ШІ‑асистент ліцею «Інвентор». Запитай про розклад, правила, документи або попроси допомоги з навчанням.
+          </div>
+          <div class="message-sources">
+            <strong>Порада:</strong> додай контекст (клас, предмет, дату) — так відповідь буде точнішою.
+          </div>
+        </div>
+      </div>
+
+      <form class="chat-input-area" id="chatForm" autocomplete="off">
+        <label class="sr-only" for="chatInput">Введіть повідомлення</label>
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Напишіть своє запитання…"
+          inputmode="text"
+          aria-label="Поле вводу повідомлення"
+        />
+        <button id="sendBtn" type="submit" aria-label="Надіслати">
+          <i class="ph-fill ph-paper-plane-right" aria-hidden="true"></i>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -31,19 +31,27 @@ const KB = [
     match: [/розклад/i, /дзвінк/i],
     answer:
       "Актуальний розклад дзвінків зазвичай публікується в розділі «Навчальний процес» на сайті ліцею або в офіційних оголошеннях. Якщо підкажете клас/зміну — уточню формат.",
-    sources: [
-      { text: "Розділ «Навчальний процес»", url: "#" },
-      { text: "Розклад дзвінків (документ)", url: "#" }
-    ]
+    
+sources: [
+  { text: "Офіційний сайт ліцею", url: "https://school.inventorschool.org.ua/" },
+  { text: "Inventor (основний сайт)", url: "https://inventor.com.ua/" },
+  { text: "Instagram", url: "https://www.instagram.com/inventor_school_kyiv/" },
+  { text: "Facebook", url: "https://www.facebook.com/inventorschool" }
+]
+
   },
   {
     match: [/захвор/i, /не прийд/i, /відсутн/i],
     answer:
       "Як правило, про відсутність через хворобу потрібно повідомити класного керівника/адміністратора класу в узгодженому каналі комунікації. Після одужання може знадобитися довідка — перевірте внутрішні правила.",
-    sources: [
-      { text: "Правила внутрішнього розпорядку", url: "#" },
-      { text: "Комунікація з класом", url: "#" }
-    ]
+   
+sources: [
+  { text: "Офіційний сайт ліцею", url: "https://school.inventorschool.org.ua/" },
+  { text: "Inventor (основний сайт)", url: "https://inventor.com.ua/" },
+  { text: "Instagram", url: "https://www.instagram.com/inventor_school_kyiv/" },
+  { text: "Facebook", url: "https://www.facebook.com/inventorschool" }
+]
+
   },
   {
     match: [/довідк/i, /про навчання/i],
@@ -58,9 +66,14 @@ const KB = [
     match: [/домашн/i, /задач/i, /поясн/i, /математ/i, /укр/i, /англ/i],
     answer:
       "З радістю допоможу 🙂 Надішліть умову задачі/тему, клас і що саме потрібно: пояснення, приклад чи перевірка рішення. Я дам кроки та поясню логіку.",
-    sources: [
-      { text: "Поради з навчання", url: "#" }
-    ]
+    
+sources: [
+  { text: "Офіційний сайт ліцею", url: "https://school.inventorschool.org.ua/" },
+  { text: "Inventor (основний сайт)", url: "https://inventor.com.ua/" },
+  { text: "Instagram", url: "https://www.instagram.com/inventor_school_kyiv/" },
+  { text: "Facebook", url: "https://www.facebook.com/inventorschool" }
+]
+
   }
 ];
 
